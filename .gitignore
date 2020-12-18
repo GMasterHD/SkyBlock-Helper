@@ -1,0 +1,40 @@
+# eclipse
+bin
+*.launch
+.settings
+.metadata
+.classpath
+.project
+
+# idea
+out
+*.ipr
+*.iws
+*.iml
+.idea
+
+# gradle
+build
+.gradle
+
+# other
+eclipse
+run
+/forge-1.8.9-11.15.1.2318-1.8.9-changelog.txt
+/CREDITS-fml.txt
+/LICENSE-fml.txt
+/MinecraftForge-Credits.txt
+/MinecraftForge-License.txt
+/Paulscode IBXM Library License.txt
+/Paulscode SoundSystem CodecIBXM License.txt
+/README.txt
+/SkyBlock Helper.iml
+/SkyBlock Helper.ipr
+/SkyBlock Helper.iws
+/.gradle
+/build
+/eclipse
+/gradle
+/out
+/run
+/libs

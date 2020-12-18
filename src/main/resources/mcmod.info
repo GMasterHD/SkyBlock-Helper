@@ -1,0 +1,16 @@
+[
+{
+	"modid": "skyblockhelper",
+	"name": "SkyBlock Helper",
+	"description": "A mod that helps you with Hypixel's SkyBlock",
+	"version": "0.0.1",
+	"mcversion": "1.8.9",
+	"url": "https://github.com/gmasterhd/skyblock-helper",
+	"updateUrl": "",
+	"authorList": ["GMasterHD"],
+	"credits": "",
+	"logoFile": "",
+	"screenshots": [],
+	"dependencies": []
+}
+]
