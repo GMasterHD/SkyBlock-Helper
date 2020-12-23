@@ -1,9 +1,13 @@
 package io.github.gmasterhd.skyblockhelper.commands;
 
 import io.github.gmasterhd.skyblockhelper.SkyBlockHelper;
+import io.github.gmasterhd.skyblockhelper.guis.GuiFeatures;
+import io.github.gmasterhd.skyblockhelper.listeners.RenderListener;
 import io.github.gmasterhd.skyblockhelper.main.Feature;
+import io.github.gmasterhd.skyblockhelper.utils.EnumUtils;
 import io.github.gmasterhd.skyblockhelper.utils.GuiFeatureData;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
@@ -72,14 +76,21 @@ public class CommandSkyBlockHelper extends CommandBase {
 			} else if(args[0].equalsIgnoreCase("color")) {
 				try {
 					int id = Integer.parseInt(args[1]);
-					int color = Integer.parseInt(args[2],16);
+					int color = 0;
+					
+					if(args[2].contains("0x")) {
+						Integer.parseInt(args[2].replace("0x", ""), 16);
+					} else {
+						Integer.parseInt(args[2], 16);
+					}
+					
 					for(Feature f: Feature.values()) {
 						if(id == f.getId() && f.isGuiFeature()) {
 							f.setGuiFeatureData(new GuiFeatureData(f.getGuiFeatureData().getPosX(), f.getGuiFeatureData().getPosY(), color, f.getGuiFeatureData().getScale()));
 						}
 					}
 				} catch(NumberFormatException e) {
-					logToChat(player,EnumChatFormatting.RED + "You have to anter an id, posX and posY as an int");
+					logToChat(player,EnumChatFormatting.RED + "You have to anter an id and a color as hex code (e.q. 0x00FF00)");
 					e.printStackTrace();
 				}
 			}
@@ -99,6 +110,9 @@ public class CommandSkyBlockHelper extends CommandBase {
 					e.printStackTrace();
 				}
 			}
+		} else {
+			System.out.println("Opening Gui...");
+			RenderListener.guiToOpen = EnumUtils.Gui.FEATURES;
 		}
 		
 		SkyBlockHelper.saves_file.save(SkyBlockHelper.saves);

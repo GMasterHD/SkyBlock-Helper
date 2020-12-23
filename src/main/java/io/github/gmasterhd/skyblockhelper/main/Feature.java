@@ -14,7 +14,7 @@ public enum Feature {
 	@Getter private String name;
 	@Getter private String description;
 	@Getter private boolean enabled;
-	@Getter @Setter private GuiFeatureData guiFeatureData;
+	@Getter private GuiFeatureData guiFeatureData;
 	
 	/**
 	 * @param id: ID of the feature in config file
@@ -82,5 +82,20 @@ public enum Feature {
 	}
 	public String getConfig_string(String key) {
 		return FileUtils.readConfigValue_string(this, key);
+	}
+	
+	public void setGuiFeatureData(GuiFeatureData data) {
+		if(this.guiFeatureData != null) {
+			this.guiFeatureData = data;
+			
+			setConfig("posX", data.getPosX());
+			setConfig("posY", data.getPosY());
+			setConfig("color", data.getColor());
+			setConfig("scale", data.getScale());
+			
+			return;
+		}
+		
+		System.err.println("Feature " + name + " does not have gui feature data!");
 	}
 }

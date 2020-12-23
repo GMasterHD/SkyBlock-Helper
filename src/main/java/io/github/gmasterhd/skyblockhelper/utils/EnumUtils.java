@@ -21,4 +21,8 @@ public class EnumUtils {
 			this.bossName = bossName;
 		}
 	}
+	
+	public enum Gui {
+		FEATURES
+	}
 }
