@@ -3,6 +3,7 @@ package io.github.gmasterhd.skyblockhelper;
 import io.github.gmasterhd.skyblockhelper.commands.CommandSkyBlockHelper;
 import io.github.gmasterhd.skyblockhelper.json.Saves;
 import io.github.gmasterhd.skyblockhelper.listeners.ChatListener;
+import io.github.gmasterhd.skyblockhelper.listeners.RenderListener;
 import io.github.gmasterhd.skyblockhelper.utils.PersistentFile;
 
 import net.minecraftforge.client.ClientCommandHandler;
@@ -23,13 +24,14 @@ public class SkyBlockHelper {
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent e) {
 		saves = new Saves();
-		saves_file = new PersistentFile<Saves>(e.getModConfigurationDirectory() + "skyblockhelper/saves.json", saves);
+		saves_file = new PersistentFile<Saves>(e.getModConfigurationDirectory() + "/skyblockhelper/saves.json", saves);
 		
 		saves = saves_file.load(Saves.class);
 	}
 	@Mod.EventHandler
 	public void init(FMLInitializationEvent e) {
 		MinecraftForge.EVENT_BUS.register(new ChatListener());
+		MinecraftForge.EVENT_BUS.register(new RenderListener());
 	}
 	@Mod.EventHandler
 	public void postInit(FMLPostInitializationEvent e) {
